@@ -14,7 +14,7 @@ export const Sidebar = () => {
       <div className="h-24 border-b border-border relative overflow-hidden">
         <img
           src="/logo-white.png"
-          alt="Agent Inbox"
+          alt="智能体收件箱"
           className="absolute -right-0 -top-2 h-32 object-cover"
         />
         <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-card to-transparent" />

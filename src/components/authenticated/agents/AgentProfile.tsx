@@ -172,7 +172,7 @@ export const AgentProfile = ({ agentId }: { agentId: Id<"agents"> }) => {
           open={showDeleteConfirm}
           onOpenChange={setShowDeleteConfirm}
           title="删除智能体"
-          description={`确定要删除${agent.name}吗？此操作不可撤销。`}
+          description={`确定要删除"${agent.name}"吗？此操作不可撤销。`}
           confirmText="删除"
           cancelText="取消"
           onConfirm={() =>

@@ -14,7 +14,7 @@ export function UnauthenticatedContent() {
       <div className="mb-8 flex flex-col items-center">
         <img
           src="/logo.png"
-          alt="Agent Inbox Logo"
+          alt="智能体收件箱"
           className="w-72 h-auto mb-2"
         />
       </div>

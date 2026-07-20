@@ -55,7 +55,7 @@ export const ParticipantMessage: React.FC<Props> = ({ message }) => {
       const mentionText = createMentionString({
         kind: "agent",
         agentId: matchingAgent._id,
-        name: participant.name ?? "Agent",
+        name: participant.name ?? "智能体",
       });
       setReplyToMention(mentionText + " ");
       setShouldFocusInput(true);

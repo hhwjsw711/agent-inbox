@@ -33,7 +33,7 @@ export const getAgentAndEnsureItIsJoinedToConversation = async (
   });
 
   if (!agent)
-    throw new Error(`Agent of id '${args.agentId}' could not be found`);
+    throw new Error(`找不到ID为 '${args.agentId}' 的智能体`);
 
   // Get or create the participant for this agent in the conversation
   const participant = await ctx.runMutation(
@@ -85,7 +85,7 @@ export const getTriageAgentAndEnsureItIsJoinedToConversation = async (
 
   if (participant.kind != "agent")
     throw new Error(
-      `参与者不是智能体，但分诊智能体必须是智能体`,
+      `参与者类型不是智能体，但分诊智能体必须是智能体`,
     );
 
   return { agent, participant };
@@ -192,7 +192,7 @@ export const processAgentAIResult = async (
     if (noOp) {
       await sendSystemMessageToConversation(ctx, {
         conversationId: args.conversation._id,
-        content: `Agent ${args.agent.name} decided not to respond to the message because: "${noOp.args.reasoning}"`,
+        content: `智能体 ${args.agent.name} 决定不回复此消息，原因："${noOp.args.reasoning}"`,
         meta: {
           toolName: "noOutput",
           reasoning: noOp.args.reasoning,
