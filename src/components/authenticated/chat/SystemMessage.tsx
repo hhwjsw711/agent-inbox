@@ -39,12 +39,12 @@ export const SystemMessage: React.FC<Props> = ({ message }) => {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Message Details</DialogTitle>
+              <DialogTitle>消息详情</DialogTitle>
             </DialogHeader>
             <div className="mt-4 space-y-4">
               <div className="text-sm">{message.content}</div>
               <div className="border-t pt-4">
-                <h3 className="font-medium mb-2">Additional Information</h3>
+                <h3 className="font-medium mb-2">附加信息</h3>
                 <pre className="bg-secondary/30 p-4 rounded-md whitespace-pre-wrap text-xs overflow-auto max-h-[400px]">
                   {JSON.stringify(message.meta, null, 2)}
                 </pre>

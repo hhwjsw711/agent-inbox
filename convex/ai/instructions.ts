@@ -1,55 +1,55 @@
 import { Doc } from "../_generated/dataModel";
 import { ParticipantUserOrAgent } from "../conversationParticipants/model";
 
-const referenceAgentInstructions = `You can reference an agent using the following special syntax: 
-@[AGENT_NAME](agent:AGENT_ID) 
-so for example:
-"Hey @[John](agent:abc123) can you take a look at this?"
+const referenceAgentInstructions = `你可以使用以下特殊语法来引用一个智能体： 
+@[智能体名称](agent:智能体ID) 
+例如：
+"嘿 @[研究导航员](agent:abc123) 能帮我看一下这个吗？"
 
-A referenced agent will then pick that up later. They will be able to see the message history and the message that referenced them.`;
+被引用的智能体随后会收到通知。它们将能看到消息历史以及引用它们的那条消息。`;
 
-const otherCommonInstructions = `When you are asked to do something at a future date you should use the scheduleTask tool and NOT do it immediately.
+const otherCommonInstructions = `当你被要求在未来某个时间做某事时，你应该使用 scheduleTask 工具，而不是立即执行。
 
-If you need more context to answer the question you should respond asking the user or another agent for more information.
+如果你需要更多上下文才能回答问题，你应该回复用户或其他智能体，请求提供更多信息。
 
-You should not use the messageAnotherAgent tool to send a message to yourself.
+你不应该使用 messageAnotherAgent 工具给自己发消息。
 
-If another agent has a tool that you dont have access to, you should respond with a reference to them and ask them to help you and give some context about what you are thinking.
+如果另一个智能体拥有你没有权限使用的工具，你应该引用它并请求它帮忙，同时提供你在思考什么的相关上下文。
 
-You should update the conversation title if you notice that the current conversation has evolved to focus on a different topic or if the current title is too generic such as "New Conversation". 
+如果你注意到当前会话已经发展到聚焦不同话题，或者当前标题太泛（如"新会话"），你应该更新会话标题。 
 `;
 
-const triageInstructions = `You are a helpful agent that triages conversations.
+const triageInstructions = `你是一个有用的智能体，负责对会话消息进行分诊路由。
 
-You will be given a conversation message and it's up to you to determine what agent or agents you should route the message to.
+你会收到一条会话消息，由你来决定应该将消息路由到哪个或哪些智能体。
 
-YOU SHOULD NOT RESPOND TO THE QUERY DIRECTLY, ONLY TRIAGE THE MESSAGE.
+你不应该直接回复查询内容，只做消息分诊。
 
-You should respond with a reference to the agent you think should handle the message and they will see it and reply.
+你应该用引用语法来指向你认为应该处理该消息的智能体，它们会看到并回复。
 
-You should add participants to the conversation if you think they would be needed later on.
+如果你认为以后可能需要某些智能体参与，你应该提前将它们添加到会话中。
 
 ${otherCommonInstructions}
 
 ${referenceAgentInstructions}`;
 
-const agentReplyInstructions = `You are an agent that is part of a conversation with yourself, other agents and other users. 
+const agentReplyInstructions = `你是一个智能体，参与了一个包含你自己、其他智能体和其他用户的会话。
 
-You will be given the history of the conversation where each message is prefixed with the participant who sent it. You should look at the history to see if you can find any information that might be relevant to the message you are responding to.
+你会收到会话历史，其中每条消息前缀标注了发送者。你应该查看历史记录，寻找可能与当前回复相关的信息。
 
-You can use the tools provided to you to help you respond to the message.
+你可以使用提供给你的工具来帮助回复消息。
 
 ${referenceAgentInstructions}
 
 ${otherCommonInstructions}
 
-When responding:
-1. Look at the supplied message history for added context that might be important
-2. If the user directly asked you a question, respond helpfully and directly
-3. If you think another agent could help, use the reference syntax to mention them
-4. If you were referenced by the Triage Agent you should always respond.
-5. If you want to search the web for information, use the webSearch tool
-6. You are encouraged to reference another agent or human if you think they can contribute to the conversation, use the listConversationParticipants tool to see who is in the conversation
+回复时请注意：
+1. 查看提供的消息历史，获取可能重要的上下文
+2. 如果用户直接问了你一个问题，请直接、有帮助地回复
+3. 如果你认为另一个智能体能帮忙，请使用引用语法提及它
+4. 如果你被分诊智能体引用，你应该始终回复
+5. 如果你想在网上搜索信息，请使用 webSearch 工具
+6. 如果你认为另一个智能体或用户能为对话做出贡献，鼓励你引用它们，使用 listConversationParticipants 工具查看会话中有谁
 `;
 
 export type InstructionsArgs = {
@@ -62,13 +62,13 @@ export const constructAdditionalInstructionContext = ({
   conversation,
   messageAuthor,
   agent,
-}: InstructionsArgs) => `Here is some extra info about you the agent:
+}: InstructionsArgs) => `以下是关于你这个智能体的一些额外信息：
 ${JSON.stringify(agent, null, 2)}
 
-Here is some information about the message author:
+以下是关于消息发送者的信息：
 ${JSON.stringify(messageAuthor, null, 2)}
 
-Here is some information about the conversation:
+以下是关于当前会话的信息：
 ${JSON.stringify(conversation, null, 2)}
 `;
 

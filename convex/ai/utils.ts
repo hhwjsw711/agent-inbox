@@ -58,9 +58,9 @@ export const getTriageAgent = async (ctx: ActionCtx) => {
     internal.agents.internalMutations.createSystemAgent,
     {
       systemAgentKind: "triage",
-      name: "System Triage Agent",
-      description: `Triage messages to the correct agent`,
-      personality: `Helpful, concise`,
+      name: "系统分诊智能体",
+      description: `将消息分诊路由到正确的智能体`,
+      personality: `有帮助、简洁`,
       avatarUrl: Agents.createAgentAvatarUrl(`system-triage`),
       tools: [],
       lastActiveTime: Date.now(),
@@ -85,7 +85,7 @@ export const getTriageAgentAndEnsureItIsJoinedToConversation = async (
 
   if (participant.kind != "agent")
     throw new Error(
-      `Participant is not an agent, it should be as it is the triage agent`,
+      `参与者不是智能体，但分诊智能体必须是智能体`,
     );
 
   return { agent, participant };
@@ -118,7 +118,7 @@ export const runAgentAIGeneration = async <T>(
     await handleAgentError(ctx, {
       error,
       conversationId: args.conversation._id,
-      errorContext: "responding to message",
+      errorContext: "回复消息",
     });
     return null;
   } finally {
@@ -148,12 +148,12 @@ export const handleAgentError = async (
   console.error(`Error while ${args.errorContext}:`, args.error);
 
   const errorMessage =
-    args.error instanceof Error ? args.error.message : "Unknown error";
+    args.error instanceof Error ? args.error.message : "未知错误";
 
   // Send error message to conversation
   await sendSystemMessageToConversation(ctx, {
     conversationId: args.conversationId,
-    content: `Error while ${args.errorContext}: ${errorMessage}`,
+    content: `${args.errorContext}时出错：${errorMessage}`,
     meta: {
       error: errorMessage,
       errorContext: args.errorContext,

@@ -5,14 +5,15 @@ import {
   differenceInMinutes,
   differenceInHours,
 } from "date-fns";
+import { zhCN } from "date-fns/locale";
 
 /**
- * Hook that returns a dynamically updating relative time string (e.g. "2 minutes ago")
+ * Hook that returns a dynamically updating relative time string (e.g. "2 分钟前")
  * Updates more frequently for recent timestamps and less frequently for older ones.
  */
 export const useTimeAgo = (timestamp: number) => {
   const [timeAgo, setTimeAgo] = React.useState(() =>
-    formatDistanceToNow(new Date(timestamp), { addSuffix: true }),
+    formatDistanceToNow(new Date(timestamp), { addSuffix: true, locale: zhCN }),
   );
 
   React.useEffect(() => {
@@ -30,7 +31,7 @@ export const useTimeAgo = (timestamp: number) => {
     };
 
     const updateTimeAgo = () => {
-      setTimeAgo(formatDistanceToNow(date, { addSuffix: true }));
+      setTimeAgo(formatDistanceToNow(date, { addSuffix: true, locale: zhCN }));
     };
 
     const interval = setInterval(() => {

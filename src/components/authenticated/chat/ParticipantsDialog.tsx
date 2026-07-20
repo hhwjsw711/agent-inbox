@@ -58,13 +58,13 @@ export const ParticipantsDialog: React.FC<ParticipantsDialogProps> = ({
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>Conversation Participants</DialogTitle>
+          <DialogTitle>会话参与者</DialogTitle>
         </DialogHeader>
         <div className="space-y-6">
           {/* Users section */}
           <div className="space-y-2">
             <div className="text-sm font-medium text-muted-foreground">
-              Users
+              用户
             </div>
             {users.map((p) => (
               <div
@@ -80,7 +80,7 @@ export const ParticipantsDialog: React.FC<ParticipantsDialogProps> = ({
                     <div className="font-medium">{p.name}</div>
                     {p.isCreator && (
                       <div className="text-xs text-muted-foreground">
-                        Creator
+                        创建者
                       </div>
                     )}
                   </div>
@@ -93,14 +93,14 @@ export const ParticipantsDialog: React.FC<ParticipantsDialogProps> = ({
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <div className="text-sm font-medium text-muted-foreground">
-                Agents
+                智能体
               </div>
               <AgentSelector
                 conversation={conversation}
                 trigger={
                   <Button variant="ghost" size="sm" className="h-7">
                     <UserPlus className="h-4 w-4 mr-1.5" />
-                    Add
+                    添加
                   </Button>
                 }
               />
@@ -139,7 +139,7 @@ export const ParticipantsDialog: React.FC<ParticipantsDialogProps> = ({
                     {p.isSystem && (
                       <TooltipContent>
                         <p>
-                          System agents cannot be removed from a conversation
+                        系统智能体无法从会话中移除
                         </p>
                       </TooltipContent>
                     )}
@@ -149,7 +149,7 @@ export const ParticipantsDialog: React.FC<ParticipantsDialogProps> = ({
             ))}
             {agents.length === 0 && (
               <div className="text-sm text-muted-foreground text-center py-4 bg-muted/50 rounded-lg">
-                No agents added yet
+                暂未添加智能体
               </div>
             )}
           </div>

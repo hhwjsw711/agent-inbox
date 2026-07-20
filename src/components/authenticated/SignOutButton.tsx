@@ -11,7 +11,7 @@ export const SignOutButton: React.FC = () => {
 
   return (
     <Button variant="default" onClick={() => void signOut()}>
-      Sign out
+      退出登录
     </Button>
   );
 };

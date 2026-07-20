@@ -32,7 +32,7 @@ export const createTools = ({
     parameters: toolDefinitions.listConversationParticipants.parameters,
     execute: async ({ conversationId }) => {
       await sendSystemMessageToConversation(ctx, {
-        content: `${agent.name} is listing participants in the conversation ${conversation._id}`,
+        content: `${agent.name} 正在列出会话 ${conversation._id} 中的参与者`,
         conversationId: conversation._id,
         meta: {
           toolName: "listConversationParticipants",
@@ -47,7 +47,7 @@ export const createTools = ({
         },
       );
 
-      // Lets turn them into the mention format which I hope is more AI compatible
+      // 转换为引用格式，对AI更友好
       return participants.map((p) => {
         if (p.agent)
           return {
@@ -79,7 +79,7 @@ export const createTools = ({
       console.log(`using tool: listAgents`, { userId });
 
       await sendSystemMessageToConversation(ctx, {
-        content: `${agent.name} is listing the users agents ${conversation._id}`,
+        content: `${agent.name} 正在列出用户的智能体 ${conversation._id}`,
         conversationId: conversation._id,
         meta: { toolName: "listAgents", userId, agentName: agent.name },
       });
@@ -119,7 +119,7 @@ export const createTools = ({
     parameters: toolDefinitions.webSearch.parameters,
     execute: async ({ query }) => {
       await sendSystemMessageToConversation(ctx, {
-        content: `${agent.name} is searching the web for "${query}"`,
+        content: `${agent.name} 正在网上搜索"${query}"`,
         conversationId: conversation._id,
         meta: { toolName: "webSearch", query, agentName: agent.name },
       });
@@ -139,7 +139,7 @@ export const createTools = ({
       });
 
       await sendSystemMessageToConversation(ctx, {
-        content: `${agent.name} updated the conversation title to "${title}"`,
+        content: `${agent.name} 将会话标题更新为"${title}"`,
         conversationId: conversation._id,
         meta: {
           toolName: "updateConversationTitle",
@@ -160,7 +160,7 @@ export const createTools = ({
     parameters: toolDefinitions.scheduleTask.parameters,
     execute: async ({ content, secondsFromNow, target, title }) => {
       await sendSystemMessageToConversation(ctx, {
-        content: `${agent.name} scheduled a task "${title}" to be sent in ${secondsFromNow} seconds`,
+        content: `${agent.name} 安排了一个任务"${title}"，将在 ${secondsFromNow} 秒后发送`,
         conversationId: conversation._id,
         meta: {
           toolName: "scheduleTask",
@@ -195,7 +195,7 @@ export const createTools = ({
     parameters: toolDefinitions.sendEmail.parameters,
     execute: async ({ to, subject, content, from }) => {
       await sendSystemMessageToConversation(ctx, {
-        content: `${agent.name} is sending an email to "${to}" with the subject "${subject}"`,
+        content: `${agent.name} 正在向"${to}"发送邮件，主题为"${subject}"`,
         conversationId: conversation._id,
         meta: {
           toolName: "sendEmail",
@@ -216,15 +216,15 @@ export const createTools = ({
         });
 
         if (response.error)
-          throw new Error(`Failed to send email: ${response.error.message}`);
+          throw new Error(`邮件发送失败：${response.error.message}`);
 
         return {
           result: "email_sent",
         };
       } catch (error: any) {
-        console.error("Failed to send email:", error);
+        console.error("邮件发送失败：", error);
         throw new Error(
-          `Failed to send email: ${error?.message ?? "Unknown error"}`,
+          `邮件发送失败：${error?.message ?? "未知错误"}`,
         );
       }
     },
@@ -236,7 +236,7 @@ export const createTools = ({
     execute: async ({ agentId }) => {
       try {
         await sendSystemMessageToConversation(ctx, {
-          content: `${agent.name} is adding an agent with ID ${agentId} to the conversation`,
+          content: `${agent.name} 正在将智能体（ID: ${agentId}）添加到会话中`,
           conversationId: conversation._id,
           meta: {
             toolName: "addParticipantToConversation",
@@ -260,9 +260,9 @@ export const createTools = ({
           type: "agent",
         };
       } catch (error: any) {
-        console.error("Failed to add agent:", error);
+        console.error("添加智能体失败：", error);
         throw new Error(
-          `Failed to add agent: ${error?.message ?? "Unknown error"}`,
+          `添加智能体失败：${error?.message ?? "未知错误"}`,
         );
       }
     },

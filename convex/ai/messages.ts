@@ -37,14 +37,14 @@ export const gatherMessages = async (
           ? {
               kind: "user" as const,
               userId: m.author._id,
-              name: m.author.name ?? "Unknown User",
+              name: m.author.name ?? "未知用户",
             }
           : {
               kind: "agent" as const,
               agentId: m.author._id,
               name: m.author.name,
             },
-      )} said: ${m.message.content}`,
+      )} 说道：${m.message.content}`,
     })),
     {
       role: "user" as const,
@@ -53,14 +53,14 @@ export const gatherMessages = async (
           ? {
               kind: "user" as const,
               userId: messageAuthor.user._id,
-              name: messageAuthor.user.name ?? "Unknown User",
+              name: messageAuthor.user.name ?? "未知用户",
             }
           : {
               kind: "agent" as const,
               agentId: messageAuthor.agent._id,
               name: messageAuthor.agent.name,
             },
-      )} said: ${message.content}`,
+      )} 说道：${message.content}`,
     },
   ];
 

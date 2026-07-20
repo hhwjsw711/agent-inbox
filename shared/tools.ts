@@ -5,99 +5,98 @@ import { pick } from "convex-helpers";
 export const toolDefinitions = {
   listConversationParticipants: {
     name: "listConversationParticipants",
-    description: "A tool for listing the participants in a conversation.",
+    description: "列出会话中的参与者",
     parameters: z.object({
       conversationId: z
         .string()
-        .describe("The ID of the conversation to list participants for"),
+        .describe("要列出参与者的会话ID"),
     }),
   },
   listAgents: {
     name: "listAgents",
-    description: "Allows listing of all of a user's agents",
+    description: "列出用户所有的智能体",
     parameters: z.object({
-      userId: z.string().describe("The ID of the user whose agents to list"),
+      userId: z.string().describe("要列出智能体的用户ID"),
     }),
   },
   messageAnotherAgent: {
     name: "messageAnotherAgent",
-    description: "Allows sending of a message to another agent",
+    description: "向另一个智能体发送消息",
     parameters: z.object({
       target: z
         .object({
           agentId: z.string(),
           agentName: z.string(),
         })
-        .describe("The target agent to message"),
-      content: z.string().describe("The message content to send"),
+        .describe("消息的目标智能体"),
+      content: z.string().describe("要发送的消息内容"),
     }),
   },
   noOutput: {
     name: "noOutput",
-    description: "Use this tool if you dont want to return any output",
+    description: "如果你不需要返回任何输出，请使用此工具",
     parameters: z.object({
-      reasoning: z.string().describe("The reason for not returning output"),
+      reasoning: z.string().describe("不返回输出的原因"),
     }),
   },
   webSearch: {
     name: "webSearch",
-    description: "Use this tool to search the web for information",
+    description: "使用此工具在网页上搜索信息",
     parameters: z.object({
-      query: z.string().describe("The search query to execute"),
+      query: z.string().describe("要执行的搜索查询"),
     }),
   },
   scheduleTask: {
     name: "scheduleTask",
-    description: "Allows scheduling of a task to be completed at a later time.",
+    description: "安排一个任务在稍后完成",
     parameters: z.object({
       target: z
         .object({
           agentId: z.string(),
           agentName: z.string(),
         })
-        .describe("The target agent for the scheduled task"),
-      title: z.string().describe("The title of the scheduled task"),
-      content: z.string().describe("The content of the scheduled task"),
+        .describe("定时任务的目标智能体"),
+      title: z.string().describe("定时任务的标题"),
+      content: z.string().describe("定时任务的内容"),
       secondsFromNow: z
         .number()
-        .describe("When to schedule the task for (in seconds from now)"),
+        .describe("距现在多少秒后执行任务"),
     }),
   },
   updateConversationTitle: {
     name: "updateConversationTitle",
-    description:
-      "Updates the title of the current conversation to better reflect its content",
+    description: "更新当前会话的标题，使其更好地反映会话内容",
     parameters: z.object({
-      title: z.string().describe("The new title for the conversation"),
+      title: z.string().describe("会话的新标题"),
     }),
   },
   sendEmail: {
     name: "sendEmail",
-    description: "Sends an email using Resend",
+    description: "使用 Resend 发送电子邮件",
     parameters: z.object({
-      to: z.string().describe("The email address to send to"),
-      subject: z.string().describe("The subject of the email"),
-      content: z.string().describe("The HTML content of the email"),
+      to: z.string().describe("收件人邮箱地址"),
+      subject: z.string().describe("邮件主题"),
+      content: z.string().describe("邮件的HTML内容"),
       from: z
         .string()
         .optional()
-        .describe("Optional from address, defaults to the system default"),
+        .describe("可选的发件人地址，默认使用系统默认地址"),
     }),
   },
   addParticipantToConversation: {
     name: "addParticipantToConversation",
-    description: "Adds an agent to the current conversation",
+    description: "将一个智能体添加到当前会话中",
     parameters: z.object({
       agentId: z
         .string()
-        .describe("The ID of the agent to add to the conversation"),
+        .describe("要添加到会话中的智能体ID"),
     }),
   },
 } as const;
 
 export type AgentToolName = keyof typeof toolDefinitions;
 
-// Define the subset of tools that users can choose from
+// 用户可选择的工具子集
 export const userChoosableToolDefinitions = pick(toolDefinitions, [
   "webSearch",
   "scheduleTask",

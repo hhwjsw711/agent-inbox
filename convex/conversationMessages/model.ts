@@ -201,11 +201,11 @@ export const createParticipantJoinedConversationMessage = async (
     agentOrUser: Doc<"agents"> | Doc<"users">;
   },
 ) => {
-  const name = args.agentOrUser.name ?? "Unknown";
+  const name = args.agentOrUser.name ?? "未知";
 
   await addMessageToConversationFromSystem(db, {
     conversationId: args.conversationId,
-    content: `👋 ${name} has joined the conversation.`,
+    content: `👋 ${name} 加入了会话。`,
   });
 };
 
@@ -223,7 +223,7 @@ export const createParticipantLeftConversationMessage = async (
 
   await addMessageToConversationFromSystem(db, {
     conversationId: args.conversationId,
-    content: `🚪 ${name} has left the conversation.`,
+    content: `🚪 ${name} 离开了会话。`,
   });
 };
 

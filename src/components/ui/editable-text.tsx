@@ -59,7 +59,7 @@ export const EditableText: React.FC<EditableTextProps> = ({
             }}
             disabled={isSaving}
           >
-            Cancel
+            取消
           </Button>
           <Button
             size="sm"
@@ -82,7 +82,7 @@ export const EditableText: React.FC<EditableTextProps> = ({
             }}
             disabled={isSaving}
           >
-            {isSaving ? "Saving..." : "Save"}
+            {isSaving ? "保存中..." : "保存"}
           </Button>
         </div>
       </div>

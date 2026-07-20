@@ -25,8 +25,8 @@ export const Confirm: React.FC<ConfirmProps> = ({
   onOpenChange,
   title,
   description,
-  confirmText = "Confirm",
-  cancelText = "Cancel",
+  confirmText = "确认",
+  cancelText = "取消",
   onConfirm,
   variant = "default",
 }) => {

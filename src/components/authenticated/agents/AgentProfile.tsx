@@ -157,24 +157,24 @@ export const AgentProfile = ({ agentId }: { agentId: Id<"agents"> }) => {
           />
         </div>
         <div className="text-sm text-muted-foreground text-center">
-          Last active: {new Date(agent.lastActiveTime).toLocaleString()}
+          最近活跃: {new Date(agent.lastActiveTime).toLocaleString()}
         </div>
         <div className="flex justify-center">
           <Button
             variant="destructive"
             onClick={() => setShowDeleteConfirm(true)}
           >
-            Delete Agent
+            删除智能体
           </Button>
         </div>
 
         <Confirm
           open={showDeleteConfirm}
           onOpenChange={setShowDeleteConfirm}
-          title="Delete Agent"
-          description={`Are you sure you want to delete ${agent.name}? This action cannot be undone.`}
-          confirmText="Delete"
-          cancelText="Cancel"
+          title="删除智能体"
+          description={`确定要删除${agent.name}吗？此操作不可撤销。`}
+          confirmText="删除"
+          cancelText="取消"
           onConfirm={() =>
             deleteAgent({ agentId: agent._id })
               .then(() => routes.home().push())

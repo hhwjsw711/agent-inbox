@@ -26,9 +26,9 @@ export const AuthenticatedContent: React.FC = () => {
         </div>
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold mb-4">Welcome to Agent Inbox</h1>
+            <h1 className="text-2xl font-bold mb-4">欢迎使用智能体收件箱</h1>
             <p className="text-muted-foreground">
-              Select a conversation or agent to get started
+              选择一个会话或智能体开始使用
             </p>
           </div>
         </div>

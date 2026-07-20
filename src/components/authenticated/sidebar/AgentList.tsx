@@ -36,7 +36,7 @@ export const AgentList = () => {
           }
         >
           <Plus className="h-5 w-5" />
-          New Agent
+          新建智能体
         </Button>
       </div>
       <div className="flex-1 overflow-y-auto">

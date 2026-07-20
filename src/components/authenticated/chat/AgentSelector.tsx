@@ -51,7 +51,7 @@ export const AgentSelector: React.FC<AgentSelectorProps> = ({
         {trigger || (
           <Button className="w-full" variant="outline">
             <UserPlus className="mr-2 h-4 w-4" />
-            Add Agent
+            添加智能体
           </Button>
         )}
       </DropdownMenuTrigger>

@@ -139,8 +139,8 @@ export const ParticipantMessage: React.FC<Props> = ({ message }) => {
           </TooltipTrigger>
           <TooltipContent>
             {participant?.kind === "user"
-              ? "You"
-              : participant?.name ?? "Agent"}
+              ? "你"
+              : participant?.name ?? "智能体"}
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
@@ -177,7 +177,7 @@ export const ParticipantMessage: React.FC<Props> = ({ message }) => {
             variant="ghost"
             size="icon"
             className="absolute -right-10 top-1/2 -translate-y-1/2 hover:bg-accent rounded-full"
-            aria-label="Reply to agent"
+            aria-label="回复智能体"
           >
             <ReplyIcon className="h-4 w-4" />
           </Button>

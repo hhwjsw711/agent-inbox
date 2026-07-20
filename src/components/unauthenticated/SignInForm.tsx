@@ -6,7 +6,7 @@ export const SignInForm: React.FC = () => (
   <Card className="w-96 mx-auto">
     <CardHeader>
       <h2 className="text-lg text-center">
-        Welcome! Please sign in to continue
+        欢迎！请登录以继续
       </h2>
     </CardHeader>
     <CardContent className="flex justify-center">

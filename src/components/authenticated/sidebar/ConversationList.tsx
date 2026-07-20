@@ -7,7 +7,7 @@ import { routes, useCurrentConversationId } from "../../../routes";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "convex-helpers/react/cache";
 
-const DEFAULT_THREAD_TITLE = "New Conversation";
+const DEFAULT_THREAD_TITLE = "新会话";
 
 export const ConversationList = () => {
   const conversations = useQuery(api.conversations.queries.listMine);
@@ -30,7 +30,7 @@ export const ConversationList = () => {
           }
         >
           <Plus className="h-5 w-5" />
-          New Conversation
+          新建会话
         </Button>
       </div>
       <div className="flex-1 overflow-y-auto">

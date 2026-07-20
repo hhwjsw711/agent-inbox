@@ -29,21 +29,21 @@ export function SignInWithPassword({
         <input
           name="email"
           type="email"
-          placeholder="Email"
+          placeholder="邮箱"
           required
           className="p-2 border rounded bg-background"
         />
         <input
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder="密码"
           required
           className="p-2 border rounded bg-background"
         />
         <input name="flow" type="hidden" value={step} />
         <div className="flex flex-col gap-2">
           <Button type="submit" className="w-full">
-            {step === "signIn" ? "Sign in" : "Sign up"}
+            {step === "signIn" ? "登录" : "注册"}
           </Button>
           <Button
             type="button"
@@ -52,8 +52,8 @@ export function SignInWithPassword({
             onClick={() => toggleStep(step === "signIn" ? "signUp" : "signIn")}
           >
             {step === "signIn"
-              ? "Don't have an account? Sign up"
-              : "Already have an account? Sign in"}
+              ? "没有账号？注册"
+              : "已有账号？登录"}
           </Button>
         </div>
       </form>

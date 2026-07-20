@@ -31,7 +31,7 @@ export const AgentPersonality: React.FC<AgentPersonalityProps> = ({
   return (
     <Card className="p-6">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">Personality</h2>
+        <h2 className="text-lg font-semibold">性格</h2>
         <Button
           variant="ghost"
           size="sm"

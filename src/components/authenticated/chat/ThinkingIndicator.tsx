@@ -32,7 +32,7 @@ export const ThinkingIndicator: React.FC<ThinkingIndicatorProps> = ({
           <div className="max-w-[70%] rounded-lg p-3 bg-muted">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Loader2 className="h-3 w-3 animate-spin" />
-              <span>{participant.name} is thinking</span>
+              <span>{participant.name} 正在思考</span>
             </div>
           </div>
         </div>

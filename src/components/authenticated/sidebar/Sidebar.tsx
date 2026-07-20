@@ -25,14 +25,14 @@ export const Sidebar = () => {
           className="flex-1 rounded-none text-primary-foreground"
           onClick={() => setActiveTab("conversations")}
         >
-          Conversations
+          会话
         </Button>
         <Button
           variant={activeTab === "agents" ? "default" : "ghost"}
           className="flex-1 rounded-none text-primary-foreground"
           onClick={() => setActiveTab("agents")}
         >
-          Agents
+          智能体
         </Button>
       </div>
       <div className="flex-1 min-h-0 overflow-hidden flex flex-col">

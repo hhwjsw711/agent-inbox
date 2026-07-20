@@ -31,7 +31,7 @@ export const AgentDescription: React.FC<AgentDescriptionProps> = ({
   return (
     <Card className="p-6">
       <div className="flex justify-between items-center mb-2">
-        <h2 className="text-lg font-semibold">About</h2>
+        <h2 className="text-lg font-semibold">简介</h2>
         <Button
           variant="ghost"
           size="sm"

@@ -74,7 +74,7 @@ export const AgentTools: React.FC<AgentToolsProps> = ({
   return (
     <Card className="p-6">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">Tools</h2>
+        <h2 className="text-lg font-semibold">工具</h2>
         <Button
           variant="ghost"
           size="sm"
@@ -107,7 +107,7 @@ export const AgentTools: React.FC<AgentToolsProps> = ({
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm" className="h-6">
                 <Plus className="h-3 w-3 mr-1" />
-                Add Tool
+                添加工具
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>

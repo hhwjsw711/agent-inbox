@@ -34,7 +34,7 @@ export function UnauthenticatedContent() {
               <div className="flex items-center gap-4 w-full my-2">
                 <div className="h-px bg-neutral-300 flex-1" />
                 <span className="text-neutral-700 text-sm font-medium px-2">
-                  or
+                  或
                 </span>
                 <div className="h-px bg-neutral-300 flex-1" />
               </div>
@@ -44,7 +44,7 @@ export function UnauthenticatedContent() {
                 onClick={() => setShowPasswordSignIn(true)}
               >
                 <Mail className="mr-2 h-4 w-4" />
-                Continue with Email
+                使用邮箱继续
                 <ChevronRight className="ml-auto h-4 w-4" />
               </Button>
             </CardContent>
@@ -64,8 +64,8 @@ export function UnauthenticatedContent() {
                 </Button>
                 <CardTitle className="text-xl text-center mt-2 pt-4">
                   {authMode === "signIn"
-                    ? "Sign in with Email"
-                    : "Create an Account"}
+                    ? "邮箱登录"
+                    : "创建账号"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">

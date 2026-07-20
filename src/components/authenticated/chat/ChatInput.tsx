@@ -149,7 +149,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ conversationId }) => {
                 },
               },
             }}
-            placeholder="Type a message... Use @ to mention agents or users"
+            placeholder="输入消息... 使用 @ 提及智能体或用户"
             singleLine={false}
             allowSpaceInQuery={true}
           >
@@ -195,7 +195,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ conversationId }) => {
           type="submit"
           className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90"
         >
-          Send
+          发送
         </button>
       </form>
 

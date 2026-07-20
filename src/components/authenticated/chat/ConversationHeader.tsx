@@ -80,16 +80,16 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Conversation Settings</DialogTitle>
+            <DialogTitle>会话设置</DialogTitle>
           </DialogHeader>
           <div className="py-4">
             <label className="text-sm font-medium mb-2 block">
-              Conversation Name
+              会话名称
             </label>
             <Input
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
-              placeholder="Enter conversation name"
+              placeholder="输入会话名称"
             />
           </div>
           <DialogFooter className="flex justify-between items-center">
@@ -100,9 +100,9 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
               onClick={() => setIsDeleteConfirmOpen(true)}
             >
               <Trash2 className="h-4 w-4" />
-              Delete Conversation
+              删除会话
             </Button>
-            <Button onClick={handleSave}>Save Changes</Button>
+            <Button onClick={handleSave}>保存修改</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -110,9 +110,9 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
       <Confirm
         open={isDeleteConfirmOpen}
         onOpenChange={setIsDeleteConfirmOpen}
-        title="Delete Conversation"
-        description={`Are you sure you want to delete "${conversation?.title}"? This action cannot be undone.`}
-        confirmText="Delete Conversation"
+        title="删除会话"
+        description={`确定要删除"${conversation?.title}"吗？此操作不可撤销。`}
+        confirmText="删除会话"
         variant="destructive"
         onConfirm={handleDelete}
       />
